@@ -30,11 +30,11 @@ class ClientThread(
                 try {
                     val jsonObject = JSONObject(it)
                     WeatherForecastInformation(
-                        temperature = jsonObject.optString("temperature"),
-                        windSpeed = jsonObject.optString("windSpeed"),
-                        condition = jsonObject.optString("condition"),
-                        pressure = jsonObject.optString("pressure"),
-                        humidity = jsonObject.optString("humidity")
+                        temperature = jsonObject.optString(Constants.TEMPERATURE),
+                        windSpeed = jsonObject.optString(Constants.WIND_SPEED),
+                        condition = jsonObject.optString(Constants.CONDITION),
+                        pressure = jsonObject.optString(Constants.PRESSURE),
+                        humidity = jsonObject.optString(Constants.HUMIDITY)
                     )
                 } catch (e: Exception) {
                     null

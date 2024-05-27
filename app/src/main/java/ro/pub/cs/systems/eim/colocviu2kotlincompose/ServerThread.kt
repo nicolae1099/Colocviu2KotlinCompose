@@ -6,7 +6,7 @@ import java.io.IOException
 import java.net.ServerSocket
 
 // todo 11 - Create Server Thread: Create a server thread that listens for client connections and handles them.
-class ServerThread(private val port: Int) : Thread() {
+class ServerThread(port: Int) : Thread() {
 
     private var serverSocket: ServerSocket? = null
     private val data: HashMap<String, WeatherForecastInformation> = HashMap()

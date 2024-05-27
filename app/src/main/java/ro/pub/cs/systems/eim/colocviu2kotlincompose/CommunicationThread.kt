@@ -3,6 +3,14 @@ package ro.pub.cs.systems.eim.colocviu2kotlincompose
 import android.util.Log
 import kotlinx.coroutines.runBlocking
 import org.json.JSONObject
+import ro.pub.cs.systems.eim.colocviu2kotlincompose.Constants.ALL
+import ro.pub.cs.systems.eim.colocviu2kotlincompose.Constants.API_KEY
+import ro.pub.cs.systems.eim.colocviu2kotlincompose.Constants.CONDITION
+import ro.pub.cs.systems.eim.colocviu2kotlincompose.Constants.HUMIDITY
+import ro.pub.cs.systems.eim.colocviu2kotlincompose.Constants.PRESSURE
+import ro.pub.cs.systems.eim.colocviu2kotlincompose.Constants.TEMPERATURE
+import ro.pub.cs.systems.eim.colocviu2kotlincompose.Constants.UNITS
+import ro.pub.cs.systems.eim.colocviu2kotlincompose.Constants.WIND_SPEED
 import java.io.IOException
 import java.net.Socket
 
@@ -30,7 +38,7 @@ class CommunicationThread(private val serverThread: ServerThread, private val so
                 // Call the Retrofit service inside a coroutine
                 val response = runBlocking {
                     try {
-                        RetrofitInstance.api.getWeather(city, WEB_SERVICE_API_KEY, UNITS)
+                        RetrofitInstance.api.getWeather(city, API_KEY, UNITS)
                     } catch (exception: Exception) {
                         Log.e(TAG, "[COMMUNICATION THREAD] Error during web service call: ${exception.message}")
                         null
@@ -90,14 +98,5 @@ class CommunicationThread(private val serverThread: ServerThread, private val so
 
     companion object {
         private const val TAG = "ro.pub.cs.systems.eim.colocviu2kotlincompose.CommunicationThread"
-        private const val WEB_SERVICE_API_KEY = "f86f418f96d4cfffe48f89e7c5cefc97"
-        private const val UNITS = "metric"
-        private const val ALL = "all"
-        private const val TEMPERATURE = "temperature"
-        private const val WIND_SPEED = "wind_speed"
-        private const val CONDITION = "condition"
-        private const val HUMIDITY = "humidity"
-        private const val PRESSURE = "pressure"
-
     }
 }
